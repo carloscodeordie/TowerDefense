@@ -2,48 +2,40 @@
 
 [ExecuteInEditMode]
 [SelectionBase]
+[RequireComponent(typeof(Waypoint))]
 public class WaypointEditor : MonoBehaviour
 {
-    [SerializeField] [Range(1f, 20f)] float gridSize = 10f;
-
-    TextMesh textMesh;
-
-    private void Start()
+    // Member variables declaration
+    Waypoint waypoint;
+    
+    // Runs when object before is loaded
+    private void Awake()
     {
-        textMesh = GetComponentInChildren<TextMesh>();
+        waypoint = GetComponent<Waypoint>();
     }
 
+    // Runs every frame
     void Update()
     {
-        MoveInGrid();
+        SnapToGrid();
+        UpdateLabel();
     }
 
-    void MoveInGrid()
+    // Functions that makes snapping for waypoints
+    private void SnapToGrid()
     {
-        Vector3 snapPos = CalculateGridPosition();
-        this.transform.position = snapPos;
+        int gridSize = waypoint.GetGridSize();
+        Vector2 gridPos = waypoint.GetGridPosition();
+        this.transform.position = new Vector3(gridPos.x, 0f, gridPos.y);
     }
 
-    private Vector3 CalculateGridPosition()
+    // Functions that updates waypoint name when moving them.
+    void UpdateLabel()
     {
-        float posX = Mathf.RoundToInt(transform.position.x / gridSize) * gridSize;
-        float posZ = Mathf.RoundToInt(transform.position.z / gridSize) * gridSize;
+        string labelText = waypoint.GetGridPosition().x / waypoint.GetGridSize() + "," + waypoint.GetGridPosition().y / waypoint.GetGridSize();
 
-        PrintPosition(posX, posZ);
-
-        return new Vector3(posX, 0f, posZ);
-    }
-
-    void PrintPosition(float posX, float posZ)
-    { 
-        string labelText = posX / gridSize + "," + posZ / gridSize;
+        TextMesh textMesh = GetComponentInChildren<TextMesh>();
         textMesh.text = labelText;
-
-        RenameWaypoint(labelText);
-    }
-
-    void RenameWaypoint(string name)
-    {
-        this.gameObject.name = name;
+        this.gameObject.name = labelText;
     }
 }
