@@ -5,12 +5,17 @@ using UnityEngine;
 
 public class PathFinder : MonoBehaviour
 {
-    Dictionary<Vector2Int, Waypoint> grid = new Dictionary<Vector2Int, Waypoint>();
+    [SerializeField] Waypoint startWaypoint;
+    [SerializeField] Waypoint endWaypoint;
 
+    Dictionary<Vector2Int, Waypoint> grid = new Dictionary<Vector2Int, Waypoint>();
+    
     // Start is called before the first frame update
     void Start()
     {
         LoadBlocks();
+        ColorStart();
+        ColorEnd();
     }
 
     private void LoadBlocks()
@@ -28,5 +33,15 @@ public class PathFinder : MonoBehaviour
                 grid.Add(wayPointPos, waypoint);
             }
         }
+    }
+
+    private void ColorStart()
+    {
+        startWaypoint.SetTopColor(Color.green);
+    }
+
+    private void ColorEnd()
+    {
+        endWaypoint.SetTopColor(Color.red);
     }
 }

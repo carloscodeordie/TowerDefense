@@ -24,4 +24,11 @@ public class Waypoint : MonoBehaviour
 
         return new Vector2Int(xPos, zPos);
     }
+
+    // Set Top Color of Waypoint
+    public void SetTopColor(Color color)
+    {
+        MeshRenderer topMeshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
+        topMeshRenderer.material.color = color;
+    }
 }
