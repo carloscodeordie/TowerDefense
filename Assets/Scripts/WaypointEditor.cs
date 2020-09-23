@@ -26,13 +26,13 @@ public class WaypointEditor : MonoBehaviour
     {
         int gridSize = waypoint.GetGridSize();
         Vector2 gridPos = waypoint.GetGridPosition();
-        this.transform.position = new Vector3(gridPos.x, 0f, gridPos.y);
+        this.transform.position = new Vector3(gridPos.x * gridSize, 0f, gridPos.y * gridSize);
     }
 
     // Functions that updates waypoint name when moving them.
     void UpdateLabel()
     {
-        string labelText = waypoint.GetGridPosition().x / waypoint.GetGridSize() + "," + waypoint.GetGridPosition().y / waypoint.GetGridSize();
+        string labelText = waypoint.GetGridPosition().x + "," + waypoint.GetGridPosition().y;
 
         TextMesh textMesh = GetComponentInChildren<TextMesh>();
         textMesh.text = labelText;
