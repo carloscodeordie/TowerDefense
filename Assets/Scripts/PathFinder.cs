@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class PathFinder : MonoBehaviour
 {
+    // Serializable parameters
     [SerializeField] Waypoint startWaypoint;
     [SerializeField] Waypoint endWaypoint;
     [SerializeField] bool isRunning = true;
 
+    // Instance members
+    List<Waypoint> path = new List<Waypoint>();
     Dictionary<Vector2Int, Waypoint> grid = new Dictionary<Vector2Int, Waypoint>();
     Queue<Waypoint> queue = new Queue<Waypoint>();
     Vector2Int[] directions = {
@@ -19,14 +22,15 @@ public class PathFinder : MonoBehaviour
     };
     Waypoint searchCenter;
 
-    // Start is called before the first frame update
-    void Start()
+    public List<Waypoint> GetPath()
     {
         LoadBlocks();
         ColorStart();
         ColorEnd();
-        //ExploreNeighbours();
-        PathFind();
+        BreadthFirstSearch();
+        CreatePath();
+
+        return path;
     }
 
     private void LoadBlocks()
@@ -56,7 +60,7 @@ public class PathFinder : MonoBehaviour
         endWaypoint.SetTopColor(Color.red);
     }
 
-    private void PathFind()
+    private void BreadthFirstSearch()
     {
         queue.Enqueue(startWaypoint);
         while (queue.Count > 0 && isRunning)
@@ -83,21 +87,10 @@ public class PathFinder : MonoBehaviour
         foreach (Vector2Int direction in directions)
         {
             Vector2Int exploringCoordinates = searchCenter.GetGridPosition() + direction;
-            try
-            {
-                QueueNewNeighbours(exploringCoordinates);
-            }
-            catch
-            {
-
-            }
-            /*
             if (grid.ContainsKey(exploringCoordinates))
             {
-                Waypoint nextWaypoint = grid[exploringCoordinates];
-                nextWaypoint.SetTopColor(Color.blue);
-            }
-            */
+                QueueNewNeighbours(exploringCoordinates);
+            }   
         }
     }
 
@@ -113,5 +106,19 @@ public class PathFinder : MonoBehaviour
             queue.Enqueue(neighbour);
             neighbour.exploredFrom = searchCenter;
         }
+    }
+
+    private void CreatePath()
+    {
+        path.Add(endWaypoint);
+
+        Waypoint previous = endWaypoint.exploredFrom;
+        while (previous != startWaypoint)
+        {
+            path.Add(previous);
+            previous = previous.exploredFrom;
+        }
+        path.Add(startWaypoint);
+        path.Reverse();
     }
 }
