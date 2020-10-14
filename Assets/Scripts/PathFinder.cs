@@ -129,4 +129,24 @@ public class PathFinder : MonoBehaviour
         path.Add(startWaypoint);
         path.Reverse();
     }
+
+    public Waypoint GetStartWaypoint()
+    {
+        return startWaypoint;
+    }
+
+    public void SetStartWaypoint(Waypoint start)
+    {
+        startWaypoint = start;
+    }
+
+    public Waypoint GetEndWaypoint()
+    {
+        return endWaypoint;
+    }
+
+    public void SetEndWaypoint(Waypoint end)
+    {
+        endWaypoint = end;
+    }
 }

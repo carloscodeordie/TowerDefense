@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] float secondsBetweenSpawn = 2f;
+    [Range(0.1f, 120f)]
+    [SerializeField] float secondsBetweenSpawn = 4f;
     [SerializeField] EnemyMovement enemyPrefab;
+
+    bool isSkipped = false;
 
     // Start is called before the first frame update
     void Start()
@@ -14,11 +17,29 @@ public class EnemySpawner : MonoBehaviour
     }
 
     IEnumerator SpawnEnemies()
-    {
+    {   
         while (true)
         {
-            print("Spawning");
-            yield return new WaitForSeconds(secondsBetweenSpawn);
+
+            if (isSkipped)
+            {
+                Waypoint startWaypoint = enemyPrefab.GetStartWaypoint();
+                Waypoint endWaypoint = enemyPrefab.GetEndWaypoint();
+                PathFinder enemyPathFinder = enemyPrefab.GetComponent<PathFinder>();
+
+                EnemyMovement instantiatedEnemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+                PathFinder newEnemyPathFinder = enemyPrefab.GetComponent<PathFinder>();
+
+                instantiatedEnemy.SetStartWaypoint(startWaypoint);
+                instantiatedEnemy.SetEndWaypoint(endWaypoint);
+
+                yield return new WaitForSeconds(secondsBetweenSpawn);
+            }
+            else
+            {
+                isSkipped = true;
+                yield return new WaitForSeconds(secondsBetweenSpawn);
+            }
         }
     }
 }

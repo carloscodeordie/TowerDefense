@@ -21,9 +21,27 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public Waypoint GetStartWaypoint()
     {
+        PathFinder pathFinder = FindObjectOfType<PathFinder>();
+        return pathFinder.GetStartWaypoint();
+    }
 
+    public Waypoint GetEndWaypoint()
+    {
+        PathFinder pathFinder = FindObjectOfType<PathFinder>();
+        return pathFinder.GetEndWaypoint();
+    }
+
+    public void SetStartWaypoint(Waypoint start)
+    {
+        PathFinder pathFinder = FindObjectOfType<PathFinder>();
+        pathFinder.SetStartWaypoint(start);
+    }
+
+    public void SetEndWaypoint(Waypoint end)
+    {
+        PathFinder pathFinder = FindObjectOfType<PathFinder>();
+        pathFinder.SetEndWaypoint(end);
     }
 }
