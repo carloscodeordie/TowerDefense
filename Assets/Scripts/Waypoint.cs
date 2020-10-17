@@ -14,6 +14,11 @@ public class Waypoint : MonoBehaviour
     // Member declaration
     Vector2Int gridPos;
 
+    private void Start()
+    {
+        Physics.queriesHitTriggers = true;
+    }
+
     private void Update()
     {
         if (isExplored)
@@ -42,5 +47,11 @@ public class Waypoint : MonoBehaviour
     {
         MeshRenderer topMeshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
         topMeshRenderer.material.color = color;
+    }
+
+    void OnMouseOver()
+    {
+        //If your mouse hovers over the GameObject with the script attached, output this message
+        print(gameObject.name);
     }
 }
