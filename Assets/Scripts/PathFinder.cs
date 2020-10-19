@@ -118,16 +118,22 @@ public class PathFinder : MonoBehaviour
 
     private void CreatePath()
     {
-        path.Add(endWaypoint);
+        SetAsPath(endWaypoint);
 
         Waypoint previous = endWaypoint.exploredFrom;
         while (previous != startWaypoint)
         {
-            path.Add(previous);
             previous = previous.exploredFrom;
+            SetAsPath(previous);
         }
-        path.Add(startWaypoint);
+        SetAsPath(startWaypoint);
         path.Reverse();
+    }
+
+    private void SetAsPath(Waypoint waypoint)
+    {
+        path.Add(waypoint);
+        DisableWaypoint(waypoint);
     }
 
     public Waypoint GetStartWaypoint()
@@ -148,5 +154,10 @@ public class PathFinder : MonoBehaviour
     public void SetEndWaypoint(Waypoint end)
     {
         endWaypoint = end;
+    }
+
+    private void DisableWaypoint(Waypoint waypoint)
+    {
+        waypoint.isPlaceable = false;
     }
 }

@@ -10,6 +10,7 @@ public class Waypoint : MonoBehaviour
     // Public members
     public bool isExplored = false;
     public Waypoint exploredFrom;
+    public bool isPlaceable = true;
 
     // Member declaration
     Vector2Int gridPos;
@@ -51,7 +52,18 @@ public class Waypoint : MonoBehaviour
 
     void OnMouseOver()
     {
-        //If your mouse hovers over the GameObject with the script attached, output this message
-        print(gameObject.name);
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (isPlaceable)
+            {
+                //If your mouse hovers over the GameObject with the script attached, output this message
+                print(gameObject.name + " is placed");
+            }
+            else
+            {
+                print("Tower cannot be placed here");
+            }
+            
+        }
     }
 }
