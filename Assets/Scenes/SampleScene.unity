@@ -5825,6 +5825,12 @@ PrefabInstance:
       propertyPath: m_Text
       value: -2,0
       objectReference: {fileID: 0}
+    - target: {fileID: 5014160474514146721, guid: b362a3fe0012fbb498020763cdbfb42e,
+        type: 3}
+      propertyPath: towerPrefab
+      value: 
+      objectReference: {fileID: 440623806, guid: d58b53b3ee0c85b4187066f265177dfa,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b362a3fe0012fbb498020763cdbfb42e, type: 3}
 --- !u!4 &1774570510 stripped

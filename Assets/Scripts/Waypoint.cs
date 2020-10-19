@@ -3,6 +3,7 @@
 public class Waypoint : MonoBehaviour
 {
     [SerializeField] Color exploredColor;
+    [SerializeField] Tower towerPrefab;
 
     // Constant declaration
     const int gridSize = 10;
@@ -56,8 +57,8 @@ public class Waypoint : MonoBehaviour
         {
             if (isPlaceable)
             {
-                //If your mouse hovers over the GameObject with the script attached, output this message
-                print(gameObject.name + " is placed");
+                Instantiate<Tower>(towerPrefab, transform.position, Quaternion.identity);
+                isPlaceable = false;
             }
             else
             {
