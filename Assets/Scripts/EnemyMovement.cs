@@ -44,4 +44,9 @@ public class EnemyMovement : MonoBehaviour
         PathFinder pathFinder = FindObjectOfType<PathFinder>();
         pathFinder.SetEndWaypoint(end);
     }
+
+    public void SetActive(bool isActive)
+    {
+        gameObject.SetActive(isActive);
+    }
 }

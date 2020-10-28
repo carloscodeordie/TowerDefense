@@ -35,8 +35,6 @@ public class PathFinder : MonoBehaviour
     private void CalculatePath()
     {
         LoadBlocks();
-        ColorStart();
-        ColorEnd();
         BreadthFirstSearch();
         CreatePath();
     }
@@ -56,16 +54,6 @@ public class PathFinder : MonoBehaviour
                 grid.Add(wayPointPos, waypoint);
             }
         }
-    }
-
-    private void ColorStart()
-    {
-        startWaypoint.SetTopColor(Color.green);
-    }
-
-    private void ColorEnd()
-    {
-        endWaypoint.SetTopColor(Color.red);
     }
 
     private void BreadthFirstSearch()
