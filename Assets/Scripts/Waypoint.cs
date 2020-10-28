@@ -3,8 +3,7 @@
 public class Waypoint : MonoBehaviour
 {
     [SerializeField] Color exploredColor;
-    [SerializeField] Tower towerPrefab;
-
+    
     // Constant declaration
     const int gridSize = 10;
 
@@ -58,7 +57,6 @@ public class Waypoint : MonoBehaviour
             if (isPlaceable)
             {
                 InstantiateTower();
-                isPlaceable = false;
             }
             else
             {
@@ -70,8 +68,7 @@ public class Waypoint : MonoBehaviour
 
     private void InstantiateTower()
     {
-        var newTower = Instantiate<Tower>(towerPrefab, transform.position, Quaternion.identity);
-        var parentTower = GameObject.Find("Towers");
-        newTower.transform.parent = parentTower.transform;
+        //Call TowerFactory AddTower method
+        FindObjectOfType<TowerFactory>().AddTower(this);
     }
 }
