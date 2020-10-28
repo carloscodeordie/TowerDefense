@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToPan: {fileID: 5480376266486925884}
-  targetEnemy: {fileID: 0}
   attackRange: 30
   projectileParticle: {fileID: 7196572265997324311}
 --- !u!1001 &5476561231719477548
@@ -211,6 +210,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bullets
       objectReference: {fileID: 0}
+    - target: {fileID: 3810330681545883970, guid: 4563e0e2e9d8716429459f8f4fbd27b0,
+        type: 3}
+      propertyPath: CollisionModule.minKillSpeed
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 770886395664702382, guid: 4563e0e2e9d8716429459f8f4fbd27b0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -265,6 +269,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786635755020087091, guid: 4563e0e2e9d8716429459f8f4fbd27b0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4563e0e2e9d8716429459f8f4fbd27b0, type: 3}
