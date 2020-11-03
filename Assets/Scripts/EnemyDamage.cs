@@ -30,9 +30,19 @@ public class EnemyDamage : MonoBehaviour
     {
         if (hitPoints <= 0)
         {
-            var deathVfx = Instantiate(deathParticlesPrefab, transform.position, Quaternion.identity);
-            deathVfx.Play();
-            Destroy(gameObject);
+            KillEnemy();
         }
+    }
+
+    private void KillEnemy()
+    {
+        var deathVfx = Instantiate(deathParticlesPrefab, transform.position, Quaternion.identity);
+        var parentEnemies = GameObject.Find("VFX");
+        deathVfx.transform.parent = parentEnemies.transform;
+
+        deathVfx.Play();
+
+        Destroy(deathVfx.gameObject, deathVfx.main.duration);
+        Destroy(gameObject);
     }
 }

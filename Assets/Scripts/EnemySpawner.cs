@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [Range(0.1f, 120f)]
-    [SerializeField] float secondsBetweenSpawn = 4f;
+    [SerializeField] float secondsBetweenSpawn = 2f;
     [SerializeField] EnemyMovement enemyPrefab;
 
     bool isSkipped = false;

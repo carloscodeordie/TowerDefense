@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    [SerializeField] float movementPeriod = 0.5f;
+    [SerializeField] ParticleSystem goalParticle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +20,21 @@ public class EnemyMovement : MonoBehaviour
         foreach (Waypoint waipoint in path)
         {
             transform.position = waipoint.transform.position;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(movementPeriod);
         }
+        SelfDestruct();
+    }
+
+    private void SelfDestruct()
+    {
+        var goalVfx = Instantiate(goalParticle, transform.position, Quaternion.identity);
+        var parentVFX = GameObject.Find("VFX");
+        goalVfx.transform.parent = parentVFX.transform;
+
+        goalVfx.Play();
+
+        Destroy(goalVfx.gameObject, goalVfx.main.duration);
+        Destroy(gameObject);
     }
 
     public Waypoint GetStartWaypoint()
