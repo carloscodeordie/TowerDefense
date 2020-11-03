@@ -4207,7 +4207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d5074c4eeaafe14f816bae4d26f5807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerLimit: 5
+  towerLimit: 3
   towerPrefab: {fileID: 440623806, guid: d58b53b3ee0c85b4187066f265177dfa, type: 3}
 --- !u!4 &1261219601 stripped
 Transform:
