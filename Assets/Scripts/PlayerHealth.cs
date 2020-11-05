@@ -25,6 +25,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void UpdateHealthText()
     {
-        healthText.text = playerHealth.ToString();
+        healthText.text = "Health: " + playerHealth.ToString();
     }
 }

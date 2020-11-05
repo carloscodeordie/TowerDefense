@@ -12425,6 +12425,46 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 738334734333383199, guid: 540053283ecb2d743af4b8a3b6512af2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -327
+      objectReference: {fileID: 0}
+    - target: {fileID: 738334734333383199, guid: 540053283ecb2d743af4b8a3b6512af2,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 568.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 738334734333383168, guid: 540053283ecb2d743af4b8a3b6512af2,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 738334734333383168, guid: 540053283ecb2d743af4b8a3b6512af2,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Health: 999'
+      objectReference: {fileID: 0}
+    - target: {fileID: 738334734580143765, guid: 540053283ecb2d743af4b8a3b6512af2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 393.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 738334734580143765, guid: 540053283ecb2d743af4b8a3b6512af2,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 700.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 738334734580143766, guid: 540053283ecb2d743af4b8a3b6512af2,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Score: 999'
+      objectReference: {fileID: 0}
+    - target: {fileID: 738334734580143766, guid: 540053283ecb2d743af4b8a3b6512af2,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 70
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 540053283ecb2d743af4b8a3b6512af2, type: 3}
 --- !u!1001 &1509888432810686036

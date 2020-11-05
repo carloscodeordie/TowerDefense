@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void UpdateSpawnText()
     {
-        spawnText.text = spawnCounter.ToString();
+        spawnText.text = "Score: " + spawnCounter.ToString();
     }
 
     IEnumerator SpawnEnemies()
