@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4219318968960842}
   - component: {fileID: 33220608907959842}
   - component: {fileID: 23253275566594634}
+  - component: {fileID: 6077967227960060273}
+  - component: {fileID: 518604361768791195}
   m_Layer: 0
   m_Name: Friendly_Base
   m_TagString: Untagged
@@ -78,3 +80,31 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &6077967227960060273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716733542366808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 135be37550ff3e049bbc4322a0c7c9a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 10
+  healthDecrease: 1
+  healthText: {fileID: 0}
+--- !u!65 &518604361768791195
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716733542366808}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 23, y: 63, z: 71}
+  m_Center: {x: -10, y: 31.5, z: 0}

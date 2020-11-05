@@ -1,19 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
 {
     [Range(0.1f, 120f)]
     [SerializeField] float secondsBetweenSpawn = 2f;
     [SerializeField] EnemyMovement enemyPrefab;
+    [SerializeField] Text spawnText;
 
     bool isSkipped = false;
+    int spawnCounter = 1;
 
     // Start is called before the first frame update
     void Start()
     {
+        UpdateSpawnText();
         StartCoroutine(SpawnEnemies());
+    }
+
+    private void UpdateSpawnText()
+    {
+        spawnText.text = spawnCounter.ToString();
     }
 
     IEnumerator SpawnEnemies()
@@ -31,7 +40,12 @@ public class EnemySpawner : MonoBehaviour
                 instantiatedEnemy.SetActive(true);
                 instantiatedEnemy.SetStartWaypoint(startWaypoint);
                 instantiatedEnemy.SetEndWaypoint(endWaypoint);
-                
+
+                // Update the spawn counter
+                spawnCounter++;
+                // Update the spawn text
+                UpdateSpawnText();
+
                 yield return new WaitForSeconds(secondsBetweenSpawn);
             }
             else
