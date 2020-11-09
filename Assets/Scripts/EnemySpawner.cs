@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float secondsBetweenSpawn = 2f;
     [SerializeField] EnemyMovement enemyPrefab;
     [SerializeField] Text spawnText;
+    [SerializeField] AudioClip spawnedEnemySFX;
 
     bool isSkipped = false;
     int spawnCounter = 1;
@@ -46,6 +47,8 @@ public class EnemySpawner : MonoBehaviour
                 // Update the spawn text
                 UpdateSpawnText();
 
+                PlaySound(spawnedEnemySFX);
+
                 yield return new WaitForSeconds(secondsBetweenSpawn);
             }
             else
@@ -54,6 +57,11 @@ public class EnemySpawner : MonoBehaviour
                 yield return new WaitForSeconds(secondsBetweenSpawn);
             }
         }
+    }
+
+    private void PlaySound(AudioClip sound)
+    {
+        GetComponent<AudioSource>().PlayOneShot(sound);
     }
 
     private EnemyMovement InstantiateEnemy()

@@ -7,6 +7,7 @@ public class EnemyDamage : MonoBehaviour
     [SerializeField] int hitPoints = 10;
     [SerializeField] ParticleSystem hitParticlesPrefab;
     [SerializeField] ParticleSystem deathParticlesPrefab;
+    [SerializeField] AudioClip hitEnemySFX;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class EnemyDamage : MonoBehaviour
     {
         hitPoints--;
         hitParticlesPrefab.Play();
+        PlaySound(hitEnemySFX);
     }
 
     private void ProcessKill()
@@ -44,5 +46,10 @@ public class EnemyDamage : MonoBehaviour
 
         Destroy(deathVfx.gameObject, deathVfx.main.duration);
         Destroy(gameObject);
+    }
+
+    private void PlaySound(AudioClip sound)
+    {
+        GetComponent<AudioSource>().PlayOneShot(sound);
     }
 }

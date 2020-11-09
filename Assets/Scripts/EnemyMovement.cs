@@ -32,7 +32,7 @@ public class EnemyMovement : MonoBehaviour
         goalVfx.transform.parent = parentVFX.transform;
 
         goalVfx.Play();
-
+        
         Destroy(goalVfx.gameObject, goalVfx.main.duration);
         Destroy(gameObject);
     }
